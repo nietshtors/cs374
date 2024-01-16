@@ -1,0 +1,1 @@
+curl $1 -s --output $2

@@ -1,0 +1,10 @@
+1) What is the kernel?
+	The core of the OS that manages resources under the hood.
+2) How is it different than the UI and utility programs?
+	The user interacts with both the UI and utility programs which ask the kernel to do work on their behalf.
+3) What are the main functions of the kernel?
+	The kernel manages physical hardware and logical resources. It provides an API to access those resources in the form of functions known as system calls.
+4) What is virtualization?
+	Each program thinks it has the machine to itself, but it is actually using virtual resources that are managed by the kernel.
+5) How would life be different without virtualization?
+	Each program would need to know what resources every other program is using so as to not overwrite something or try to access the same thing at the same time.

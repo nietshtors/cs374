@@ -1,0 +1,8 @@
+1) What is a shell script?
+	A program that is run by the shell. They are good at running commands and processing their output.
+2) How does a shebang work?
+	It's put as the first line in a shell script to tell the OS what program to use to run it.
+3) What does a regex do?
+	Short for regular expression, they are used for pattern matching.
+4) Can you write a regex that matches any two-digit number except 10 through 19?
+	[2-9][0-9] This doesn't account for anything before or after.

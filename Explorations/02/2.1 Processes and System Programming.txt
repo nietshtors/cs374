@@ -1,0 +1,8 @@
+1) What is a process?
+    A process is a running program.
+2) What are some of the common functions in the kernel's process API?
+    The three main functions create a process, destroy a process, or wait for a process to complete. 
+3) What does a file descriptor do?
+    A non-negative integer representing an open file or other resource.
+4) What's the difference between stderr and stdout?
+    Standard error vs standard output. Allows for the separation of error messages.

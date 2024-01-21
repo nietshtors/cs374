@@ -1,0 +1,10 @@
+1) Which Unix syscalls map to process creation, termination, and waiting?
+    fork(), kill(), wait() respectively.
+2) What is the common relationship between fork() and exec()?
+    Both create a process.
+3) What is a fork bomb?
+    When running fork() in a loop, it compounds exponentially and can DOS you out of your machine.
+4) What is a zombie process? How is it created and destroyed?
+    It is created when a process exits and persists until its exit status is collected by another process. If the parent process dies before the child, the child is adopted by the init process which is always running.
+5) What is the init process? What does it do?
+    It is the first process created when the system boots and starts all other processes. This makes it the ancestor of every process on the machine. It also will not terminate while the system is running.

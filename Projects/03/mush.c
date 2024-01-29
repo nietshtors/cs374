@@ -17,7 +17,9 @@ int run_command(char **args, int num_args) {
         return 1;
     }
     // Check if command is "exit"
-    else if (!strcmp(args[0], "exit")) {exit(0);}
+    // this below needs work
+    // (args[1] == NULL) ? 0 : *args[1] - 48 
+    else if (!strcmp(args[0], "exit")) {exit((args[1] == NULL) ? 0 : *args[1] - 48);}
 
     pid_t pid;
     pid = fork();
@@ -50,6 +52,9 @@ int main() {
         printf("%s ( ͡° ͜ʖ ͡°) ", cwd);
         fflush(stdout);
         fgets(input, sizeof(input), stdin);
+
+        // Exit on end-of-file
+        if (feof(stdin)) {exit(0);}
 
         char *token;
         int num_args = 0;

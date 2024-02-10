@@ -1,0 +1,16 @@
+What does the CFS use the vruntime variable for?
+    It tracks a process's virtual runtime that is scaled based on the process's niceness. The CFS chooses the process with the lowest vruntime to run next.
+In CFS, what are the effects of changing the sched_latency tuning value?
+    The CFS divides the sched_latency by the number of processes running to get a per-process time slice. Changing that value directly affects the time slice that a process is allotted.
+In CFS, what are the effects of changing the min_granularity tuning value?
+    The min_granularity determines the minimum length of a time slice for a process.
+How does using a red-black tree help make CFS more performant?
+    Only running processes are kept in the tree which means there is less to keep track of. Using a red-black tree instead of a simple binary tree allows for storing an extra bit of information (color).
+With CFS, what wrench is thrown in the works by I/O?
+    If a process sleeps for a long time its vruntime will be behind and would monopolize the CPU to catch up. This is avoided by setting the vruntime of the waking job to the minimum found in the tree. Jobs that sleep for short periods frequently don't get their fair share of CPU.
+If a parent creates a pipe, how does the child access that pipe?
+    The child automagically has access to both ends of the pipe when the parent forks.
+Why is it a good practice for a process to close the ends of the pipe it isn't using?
+    "A process won't get an end-of-file indication on the read end of the pipe unless all the process that had access to the write end have closed it."
+After you dup2() an open file descriptor into another, what is the difference between the two in terms of usage?
+    They can be used interchangably.

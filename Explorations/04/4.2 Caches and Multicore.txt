@@ -1,0 +1,4 @@
+What makes a CPU with no cache less performant than one with?
+    The CPU would have to fetch from memory for everything. With a cache, data is temporarily stored in the cache which is part of the CPU and can be accessed a lot faster.
+What's the octal permission that corresponds to the ls -l permission of -r-xrw---x?
+    0561

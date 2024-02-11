@@ -1,0 +1,6 @@
+If I've made 5 memory allocations with malloc(), how many times should I call free()?
+    5. Every allocation needs to be freed.
+What's the difference between getting memory from malloc() and getting it from mmap()?
+    malloc() usually calls mmap() to allocate a larger chunk of memory. malloc() can then manage subchunks from that.
+What is a memory leak? How is it caused?
+    It is caused by forgetting to free memory. The program will eventually run out of memory and a restart will be required

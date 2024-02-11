@@ -1,0 +1,10 @@
+What's the difference between physical and virtual memory?
+    Physical memory is the hardware. Virtual memory is the memory the process thinks it has.
+Will you always have more virtual memory than physical memory? Or will it be the other way around?
+    You will always have much more virtual memory than physical.
+What's the difference between the stack and the heap? What is stored in each?
+    They store different types of data and are stored in opposite ends of virtual memory, growing towards each other. The heap contains malloc'd data and dynamic data structures while the stack contains local variables, arguments to routines, return values, etc.
+What's an automatic variable in C? Do they go on the stack or heap?
+    A local variable that is automatically freed when the block ends. They are stored on the stack. 
+What kind of data goes on the heap?
+    The heap contains malloc'd data and dynamic data structures.

@@ -1,0 +1,5 @@
+How did instructions on the VAX specify the segment?
+
+What advantages does the segmented memory scheme have over vanilla base/bound?
+
+What kinds of problems does fragmentation cause?

@@ -1,0 +1,9 @@
+What do you think some problems might be with implementing memory virtualization in software?
+
+What is the max alignment on your system?
+
+When it comes to memory virtualization, what parts are the CPU's job? What parts are the OS's job?
+
+What happens when a process tries to read outside of its virtual address space?
+
+What are some of the drawbacks of memory virtualization with base/bounds?

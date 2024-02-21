@@ -1,5 +1,6 @@
 How did instructions on the VAX specify the segment?
-
+    The address space is chopped into segments based on the top few bits of the virtual address.
 What advantages does the segmented memory scheme have over vanilla base/bound?
-
+    Processes can dynamically grow.
 What kinds of problems does fragmentation cause?
+    Satisfying a memory allocation can be difficult when an amount of memory is spread out across a number of segments.

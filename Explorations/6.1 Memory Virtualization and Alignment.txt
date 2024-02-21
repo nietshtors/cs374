@@ -1,9 +1,10 @@
 What do you think some problems might be with implementing memory virtualization in software?
-
+    Bad code may cause memory to be accessed outside its bounds.
 What is the max alignment on your system?
-
+    16
 When it comes to memory virtualization, what parts are the CPU's job? What parts are the OS's job?
-
+    The CPU can raise exceptions if a process goes outside the bounds of its memory. The OS controls how virtual memory gets mapped to physical memory.
 What happens when a process tries to read outside of its virtual address space?
-
+    The CPU raises an exception and gives control back to the OS. The OS likely then kills the process.
 What are some of the drawbacks of memory virtualization with base/bounds?
+    It may be eaiser for a process to reach outside its bounds. Memory allocation isn't space efficient and can't be changed easily. 

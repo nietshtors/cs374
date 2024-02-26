@@ -20,7 +20,7 @@ void *myalloc(int size) {
         head->next = NULL;
     }
     size = PADDED_SIZE(size);
-    // int padded_struct_block_size = PADDED_SIZE(sizeof(block));
+    int padded_struct_block_size = PADDED_SIZE(sizeof(block));
     block *b = head;
     while (b->size < size || b->in_use) {
         if (b->next) {
@@ -32,7 +32,11 @@ void *myalloc(int size) {
     }
     b->in_use = 1;
 
-    return b;
+    if (/*Big enough to split*/) {
+        // Split
+    }
+
+    return PTR_OFFSET(b, padded_struct_block_size);
 }
 
 void myfree(void *p) {

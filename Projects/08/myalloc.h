@@ -13,6 +13,7 @@ typedef struct block {
     int size;            // Size in bytes
     int in_use;          // Boolean
     struct block *next;
+    struct block *prev;
 } block;
 
 void *myalloc(int size);

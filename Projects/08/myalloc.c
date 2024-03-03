@@ -8,7 +8,7 @@
 
 int first = 1;
 block *head = NULL;  // Head of the list, empty
-int padded_struct_block_size = PADDED_SIZE(sizeof(block));
+const int padded_struct_block_size = PADDED_SIZE(sizeof(block));
 
 
 void *myalloc(int size) {
@@ -22,6 +22,7 @@ void *myalloc(int size) {
         head->size = MMAP_SIZE - PADDED_SIZE(sizeof(block));
         head->in_use = 0;
         head->next = NULL;
+        head->prev = NULL;
     }
 
     block *b = head;
@@ -41,6 +42,7 @@ void *myalloc(int size) {
         b2->size = b->size - size - padded_struct_block_size;
         b2->in_use = 0;
         b2->next = b->next;
+        b2->prev = b;
         // Adjust old block
         b->size = size;
         b->next = b2;
@@ -58,6 +60,21 @@ void myfree(void *p) {
     }
 
     b->in_use = 0;
+
+    if (b->prev && b->prev->in_use == 0) {
+        // Consolidate
+        b = b->prev;
+        b->size = b->size + b->next->size + padded_struct_block_size;
+        b->next = b->next->next;
+        if (b->next) {b->next->prev = b;}
+    }
+
+    if (b->next && b->next->in_use == 0) {
+        // Consolidate
+        b->size = b->size + b->next->size + padded_struct_block_size;
+        b->next = b->next->next;
+        if (b->next) {b->next->prev = b;}
+    }
 }
 
 void print_data(void)
@@ -72,6 +89,7 @@ void print_data(void)
     while (b != NULL) {
         // Uncomment the following line if you want to see the pointer values
         // printf("[%p:%d,%s]", b, b->size, b->in_use? "used": "free");
+        // printf("[%p:%p:%p:%d,%s]", b->prev, b, b->next, b->size, b->in_use? "used": "free");
         printf("[%d,%s]", b->size, b->in_use? "used": "free");
         if (b->next != NULL) {
             printf(" -> ");
@@ -83,35 +101,18 @@ void print_data(void)
     printf("\n");
 }
 
-int main(int argc, char *argv[]) {
-    (void)argc;
-    (void)argv;
+int main() {
+    // Example 4
+    void *p, *q, *r, *s;
 
-    // // Example 1
-    // void *p;
+    p = myalloc(10); print_data();
+    q = myalloc(20); print_data();
+    r = myalloc(30); print_data();
+    s = myalloc(40); print_data();
 
-    // p = myalloc(512);
-    // print_data();
-
-    // myfree(p);
-    // print_data();
-
-    // // Example 2
-    // myalloc(10); print_data();
-    // myalloc(20); print_data();
-    // myalloc(30); print_data();
-    // myalloc(40); print_data();
-    // myalloc(10000); print_data();
-    // myalloc(50); print_data();
-
-    // // Example 3
-    // void *p;
-
-    // myalloc(10);     print_data();
-    // p = myalloc(20); print_data();
-    // myalloc(30);     print_data();
-    // myfree(p);       print_data();
-    // myalloc(40);     print_data();
-    // myalloc(10);     print_data();
+    myfree(q); print_data();
+    myfree(p); print_data();
+    myfree(s); print_data();
+    myfree(r); print_data();
 
 }

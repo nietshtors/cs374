@@ -1,0 +1,8 @@
+Why can't we use compaction/fragmentation with malloc() to consolidate smaller free spaces and avoid external fragmentation?
+    We'll lose track of where the data is when shuffling pointers around. 
+What would the algorithm look like for detecting a bad free with a magic number? How would you compute the location of the magic number from the pointer the user passed in?
+    Add the size of the block to the pointer.
+What is coalescing OK with a malloc()-like system, but compaction isn't?
+    There is no reshuffling of pointers.
+Why does the free list have to be "embedded", as the book puts it?
+    It makes it easier to keep track of.

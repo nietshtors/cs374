@@ -1,0 +1,7 @@
+What is the benefit of fixed-sized pages in regards to fragmentation?
+    
+What are some of the advantages that base/bounds has over paging (as described in this chapter)?
+
+What are some of the advantages that paging (as described in this chapter) has over base/bounds?
+
+What are some of the flags that are kept per-entry in the page table?
